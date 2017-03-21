@@ -84,6 +84,56 @@ processed and send at any time. This allows to minimize message framing overhead
 
 This chapter lists an overview of all __active__ messsages by example.
 
+## authenticate
+
+Attaches an user to a connection to gain access to protected states and methods. This can be done only once per connection and should happen before adding or removing states and methods. To login either provide `user` + `password` OR a [`jwt`](https://jwt.io). On successfull authentication, the daemon must respond with a result containing a `jwt`. This can be stored in the client for sessions / auto-login.
+
+
+Note that the returned `jwt` may contain a expiration date and thus may be different on every call.
+
+
+#### example authenticate message with user + password
+```javascript
+// request from peer
+{
+  "method": "authenticate",
+  "params": {
+    "user": <user>,
+    "password": <password>
+  },
+  "id": 33
+}
+
+// response from daemon
+{
+  "id": 33,
+  "result": {
+    "jwt": <jwt>
+  }
+}
+```
+
+
+#### example authenticate message with jwt
+```javascript
+// request from peer
+{
+  "method": "authenticate",
+  "params": {
+    "jwt": <jwt>
+  },
+  "id": 33
+}
+
+// response from daemon
+{
+  "id": 33,
+  "result": {
+    "jwt": <jwt>
+  }
+}
+```
+
 ## add
 
 Use the __add__ message for adding States or Methods to the Daemon. The Daemon
