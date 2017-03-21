@@ -87,8 +87,10 @@ This chapter lists an overview of all __active__ messsages by example.
 ## add
 
 Use the __add__ message for adding States or Methods to the Daemon. The Daemon
-will route all set/call messages to the Peer, changing the method to the
+will route respective set/call messages to the Peer who has added the state or method, changing the "method" to the
 respective path.
+
+The added entry will be considered a State when `value` is of type Boolean, Number, String, Array or Object.
 
 ```javascript
 // add a simple state
@@ -232,7 +234,7 @@ will route the Request to the responsible Peer.
 
 ## change
 
-Use the __change__ message to make a State value change public.
+Use the __change__ message to make a State value change public. This message might be issued after a corresonding routed "set" request or spontanuously at will. The new `value` must be of type Boolean, Number, String, Array or Object.
 
 ```javascript
 {
