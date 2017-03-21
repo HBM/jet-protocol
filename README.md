@@ -153,10 +153,11 @@ Daemon will stop to route set/call messages for the respective path.
 ## set
 
 Use the __set__ message for (trying) to set a State to a new value. The Daemon
-will route the Request to the responsible Peer. Accepting the new value is solely
-up to the Peer. In case of an error-less dispatching / assigning, the Peer
+will route the Request to the responsible Peer. The value must be of type Boolean, Number, String, Array or Object.
+
+Accepting the new value is solelyup to the Peer. In case of an error-less dispatching / assigning, the Peer
 posts a __change__ Notification, thus informing all fetching Peers about the
-actual new value.
+actual new value. The new value may __differ__ from the requested new value.
 
 ```javascript
 // set a state to a new value
