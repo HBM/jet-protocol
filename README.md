@@ -89,8 +89,8 @@ This chapter lists an overview of all __active__ messsages by example.
 Attaches an user to a connection to gain access to protected states and methods. This can be done only once per connection and should happen before adding or removing states and methods. To login either provide `user` + `password` OR a [`jwt`](https://jwt.io) obtained previously. On successfull authentication, the daemon must respond with a result containing a `jwt`. This can be stored in the client for sessions / auto-login.
 
 
-Note that the returned `jwt` may contain a expiration date and thus may be different on every call.
-
+Note that the returned `jwt` may contain a expiration date and thus may be different on every "authenticate" call. Once successfully authenticated, it is not allowed to authenticate again. To authentiate as a different user, create a new connection.
+ 
 
 #### example authenticate message with user + password
 ```javascript
