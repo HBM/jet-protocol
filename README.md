@@ -82,7 +82,9 @@ processed and send at any time. This allows to minimize message framing overhead
 
 # Messages
 
-This chapter lists an overview of all __active__ messsages by example.
+Messages are JSON-documents which are passed from the sender to the receiver using an underlaying transport mechanism. Depending on the nature of this mechanism additional [document-framing](transportlayer-binding.md) might be needed.
+
+The following chapter lists an overview of all __active__ messsages by example.
 
 ## add
 
