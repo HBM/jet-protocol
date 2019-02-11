@@ -25,6 +25,7 @@ The sender prefixes each JSON document (aka message) with the length of the mess
 
 Remarks:
 * The length might include whitespace in the JSON document, including heading (before the first '''{''') and trailing (following after the last '''}'''
+* Theoretically, an additional framing is not necessary since the JSON-format is capable of determining if a JSON document is complete. In the real world, JSON-parsers which create object tree-structures in memory are popular. These parsers are not able to work on a stream of incoming characters and need the entire, complete JSON-document as an input string. The lenght-prefixed document framing eases the preprocessing step for these parsers.
 
 # Transport Layers and Jet Message Framing
 
